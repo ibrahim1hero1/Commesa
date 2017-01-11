@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <context:component-scan base-package="com.cross.controller"></context:component-scan>
+    <context:component-scan base-package="com.cross.dao"></context:component-scan>
+    <context:component-scan base-package="com.cross.services"></context:component-scan>
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:default-servlet-handler/>
+	
+   <bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+    <mvc:resources location="/resources/factories/" mapping="/resources/**"/>
+    <mvc:resources location="/resources/products/" mapping="/products/**"/>
+    <mvc:resources location="/theme/bootstrap/" mapping="/theme/**"/>
+     <mvc:resources location="/resources/jshandler/" mapping="/jshandler/**"/>
+    
+    
+    <bean id="viewResolver"
+              class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+              p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+    
+    
+     <bean id="tabviewResolver"
+              class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+              p:prefix="/WEB-INF/jsp/accountinfo/" p:suffix=".jsp" />
+
+      <bean id="productviewResolver"
+              class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+              p:prefix="/WEB-INF/jsp/product/" p:suffix=".jsp" />
+ 
+      
+      
+
+   <bean id="multipartResolver"   
+         class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>  
+
+      
+     
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+        <property value="global" name="basename"/>
+    </bean>
+	
+	
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
+        <property name="url" value="jdbc:mysql://localhost/commesa"></property>  
+        <property name="username" value="root"></property>  
+        <property name="password" value="sysadmin"></property>  
+    </bean>  
+
+    
+<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+<property ref="dataSource" name="dataSource"/>
+<property name="hibernateProperties">
+<props>
+<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+</props>
+</property>
+
+<property name="packagesToScan">
+
+  <list>
+   <value>com.cross.dao.pojo</value>
+  </list>
+
+</property>
+</bean>
+
+   
+   <tx:annotation-driven/>
+
+  <bean id="exceptionTranslator" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"> </bean>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+      <property ref="sessionFactory" name="sessionFactory"/>
+    </bean>  
+
+
+   
+
+</beans>
