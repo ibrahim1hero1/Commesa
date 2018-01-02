@@ -6,4 +6,4 @@
 Corporations promise to increase profits and decrease costs using best algorithms to all factories and all importers and exporters all over the world                                                                           
 
 Welcome to Corporations.                                                                                                                                                                                                                                               
-![alt tag](https://raw.githubusercontent.com/ibrahim1hero1/commesa/master/readme/images/Corporations.png).   
+![alt tag](https://raw.githubusercontent.com/ibrahim1hero1/commesa/master/readme/images/corporations.png).   
