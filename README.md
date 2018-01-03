@@ -5,5 +5,9 @@
  
 Corporations promise to increase profits and decrease costs using best algorithms to all factories and all importers and exporters all over the world                                                                           
 
+# If you want to be sponser please contact with me :
+# email: ibrahim.seniore@gmail.com
+# phonr: +20 01005092916
+
 Welcome to Corporations.                                                                                                                                                                                                                                               
 ![alt tag](https://raw.githubusercontent.com/ibrahim1hero1/commesa/master/readme/images/corporations.png).   
